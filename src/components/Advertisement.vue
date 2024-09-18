@@ -9,7 +9,7 @@ defineProps({
 
 <template>
 <div class="card" style="width: 18rem;">
-  <img src="../assets/image/image.png" class="card-img-top " alt="...">
+  <img :src="realEstate.image" class="card-img-top " alt="...">
   <div class="card-body">
     <div>
         <p class="price">{{ realEstate.price }} ₾</p>
