@@ -11,7 +11,6 @@ import Header from './components/Header.vue'
     </div>
     
   </div>
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
 <style scoped>
