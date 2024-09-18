@@ -1,0 +1,7 @@
+.filter-dropdown-btn:focus,
+.filter-dropdown-btn:active {
+  background-color: #DBDBDB !important; /* Custom active background color */
+  outline: none !important;             /* Remove default focus outline */
+  box-shadow: none !important;          /* Remove Bootstrap's default box-shadow */
+  border: none !important;      
+}
