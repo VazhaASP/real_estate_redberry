@@ -10,3 +10,6 @@ const api = axios.create({
         ...(token && { Authorization: `Bearer ${token}` }) // Add token to Authorization header if available
     }
 });
+
+export default api;
+
