@@ -27,10 +27,14 @@ onMounted( () => {
 </script>
 <template>
   <div>
+    <div class="modal-dialog modal-dialog-centered">
+    </div>
     <div class="filter-container ">
         <div class="d-flex justify-content-between">
             <real-estate-filter></real-estate-filter>
             <AddButton></AddButton>
+             <!-- <AddAgentModal></AddAgentModal> -->
+          
         </div>
     </div>
     <div class=" mt-3">
