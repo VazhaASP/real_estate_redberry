@@ -1,0 +1,9 @@
+# Ensure all text files use LF in the repo, but CRLF on Windows systems
+* text=auto
+
+# Exclude binary files like SVGs, images, etc.
+*.svg binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
