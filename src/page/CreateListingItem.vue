@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { useForm,  useField, Form, Field, ErrorMessage } from "vee-validate";
 import {getRegions, getCity} from "../http/classificator"
 import { getAgents } from "../http/agent";
@@ -100,6 +100,7 @@ const { validate, errors, resetForm } = useForm({
 });
 
   const regionList = ref([]);
+  const staticCityList = ref([]);
   const cityList = ref([]);
   const agent = ref([])
 
@@ -110,6 +111,15 @@ const handleFileUpload = (event) => {
     formData.value.image = file;
   }
 };
+
+watch(() => formData.value.region_id, (newValue, oldValue) => {
+    if (newValue && newValue !== oldValue ) {
+        cityList.value = staticCityList.value.filter((value) => value.region_id === newValue)
+        
+    }else if(!newValue){
+        cityList.value = staticCityList.value
+    }
+});
 
 const onSubmit = async (values) => {
   try {
@@ -145,9 +155,14 @@ onMounted( async() =>{
         regionList.value = response.data
 
     });
+    console.log(regionList.value);
+    
 await getCity().then((response)=>{
-    cityList.value = response.data
+    cityList.value = response.data;
+    staticCityList.value = response.data
 });
+console.log('cityList.value', cityList.value);
+
 await getAgents().then((response)=>{
     agent.value = response.data
     console.log(response.data);

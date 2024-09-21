@@ -94,11 +94,12 @@ const onSubmit = async (values) => {
 </script>
 <template>
     <div class="d-flex justify-content-between">
+      <router-link to="/create-new-listing" class="a-style">
         <button type="button" class="btn btn-danger me-3">  
-          <a href="/create-new-listing" class="a-style">
-            <i class="bi bi-plus"></i> ლისტინგის დამატება
-          </a> 
+          <i class="bi bi-plus"></i> ლისტინგის დამატება
         </button>
+      </router-link>
+      
         <button type="button" class="btn btn-outline-danger" @click="openModal">     
             <i class="bi bi-plus"></i> აგენტის დამატება
           </button>
