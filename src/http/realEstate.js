@@ -1,6 +1,7 @@
 import api from "../plugins/axios/index"
 
 export const getRealEstates = async () => { return await api.get('/real-estates') };
+export const getRealEstate = async (id) => { return await api.get('/real-estates/'+id) };
 
 export const createRealEstate = async (
     address, 
@@ -42,3 +43,5 @@ export const createRealEstate = async (
       throw error;
     }
   };
+
+  export const deleteRealEstate = async (id) => { return await api.delete('/real-estates/'+id) };

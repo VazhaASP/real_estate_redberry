@@ -9,12 +9,14 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import RealEstatePage from "./page/RealEstatePage.vue"
 import CreateListingItem from "./page/CreateListingItem.vue"; 
+import DetailPage from "./page/DetailPage.vue"
 
 const app = createApp(App)
 
 const routes = [
     { path: '/', component: RealEstatePage },
-    { path: '/create-new-listing', component: CreateListingItem } 
+    { path: '/create-new-listing', component: CreateListingItem }, 
+    { path: '/detail/:id', component: DetailPage } 
 ]
 
 const router = createRouter({

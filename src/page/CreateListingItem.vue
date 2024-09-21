@@ -164,7 +164,6 @@ await getAgents().then((response)=>{
         <h5 class="form-title w-100 text-center">ლისტინგის დამატება</h5>
     </div>
     <form @submit.prevent="onSubmit(formData)">
-        {{ formData }}
     <section class="mt-5"> 
         <h4 class="section-title">
             გარიგების ტიპი

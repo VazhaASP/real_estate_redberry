@@ -83,4 +83,5 @@ input[type="file"] {
 .a-style{
   text-decoration: none; /* Removes the underline */
     color: inherit;
+    cursor: pointer;
 }
