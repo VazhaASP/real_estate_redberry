@@ -1,5 +1,4 @@
 <script setup lang="js">
-import RealEstateFilter from '../components/filter/RealEstateFilter.vue'
 import AddAgentButton from '../components/buttons/AddAgentButton.vue'
 
 import Advertisement from '../components/Advertisement.vue'
@@ -32,6 +31,14 @@ const closeDropdown = () => {
   const dropdown = document.querySelector('.dropdown-menu');
   dropdown.classList.toggle('show')
 }
+
+const price = ref([
+  {value: 50000, name: "50,000 ₾"},
+  {value: 100000, name: "100,000 ₾"},
+  {value: 150000, name: "150,000 ₾"},
+  {value: 200000, name: "200,000 ₾"},
+  {value: 250000, name: "250,000 ₾"},
+])
 
 onMounted( async() => {
     await getRealEstates()
@@ -71,7 +78,7 @@ onMounted( async() => {
                 aria-expanded="false">
                 რეგიონი
               </button>
-              <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start region-drop p-4">
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start drop p-4">
                 <h5 class="title">რეგიონების მიხედვით</h5>
                 <div class="region-list row mt-3">
                   <div class="col-4 mb-3" v-for="(item, index) in regionList" :value="item.id" :key="index">
@@ -88,6 +95,112 @@ onMounted( async() => {
                   <button class="btn choose" @click="filterRegion">არჩევა</button>
                 </div>
               </div>
+            </div>
+            <div class="btn-group me-3 p-1">
+              <button 
+                type="button" 
+                class="btn dropdown-toggle filter-dropdown-btn" 
+                data-bs-toggle="dropdown" 
+                data-bs-display="static"
+                data-bs-auto-close="false" 
+                aria-expanded="false">
+                საფასო კატეგორია
+              </button>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start small-drop drop p-4">
+                <h5 class="title">ფასის მიხედვით</h5>
+                <div class="row mt-3">
+                  <div class="col-6">
+                    <div class="mb-3">
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="დან">
+                    </div>
+                    <div>
+                      <p>მინ. ფასი</p>
+                      <ul>
+                        <li v-for="(item, index) in price" :key="index">{{ item.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="mb-3">
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="მდე">
+                    </div>
+                    <div>
+                      <p>მაქს. ფასი</p>
+                      <ul>
+                        <li v-for="(item, index) in price" :key="index">{{ item.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button class="btn choose" @click="filterRegion">არჩევა</button>
+                </div>
+              </div>
+              
+            </div>
+            <div class="btn-group me-3 p-1">
+              <button 
+                type="button" 
+                class="btn dropdown-toggle filter-dropdown-btn" 
+                data-bs-toggle="dropdown" 
+                data-bs-display="static"
+                data-bs-auto-close="false" 
+                aria-expanded="false">
+                ფართობი
+              </button>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start small-drop drop p-4">
+                <h5 class="title">ფართობის მიხედვით</h5>
+                <div class="row mt-3">
+                  <div class="col-6">
+                    <div class="mb-3">
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="დან">
+                    </div>
+                    <div>
+                      <p>მინ. მ</p>
+                      <ul>
+                        <!-- <li v-for="(item, index) in price" :key="index">{{ item.name }}</li> -->
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="mb-3">
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="მდე">
+                    </div>
+                    <div>
+                      <p>მაქს. მ</p>
+                      <ul>
+                        <!-- <li v-for="(item, index) in price" :key="index">{{ item.name }}</li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button class="btn choose" @click="filterRegion">არჩევა</button>
+                </div>
+              </div>
+              
+            </div>
+            <div class="btn-group me-3 p-1">
+              <button 
+                type="button" 
+                class="btn dropdown-toggle filter-dropdown-btn" 
+                data-bs-toggle="dropdown" 
+                data-bs-display="static"
+                data-bs-auto-close="false" 
+                aria-expanded="false">
+                საძინებლების რაოდენობა
+              </button>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start small-drop drop p-4">
+                <h5 class="title">საძინებლების რაოდენობა</h5>
+                <div class=" mt-3">
+                 
+                
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button class="btn choose" @click="filterRegion">არჩევა</button>
+                </div>
+              </div>
+              
             </div>
           </div>
             <AddAgentButton></AddAgentButton>
@@ -109,7 +222,7 @@ onMounted( async() => {
   </div>
 </template>
 <style scoped>
-.region-drop{
+.drop{
   width: 731px;
 /* height: 284px; */
 padding: 24px 0px 0px 0px;
@@ -119,6 +232,10 @@ opacity: 0px;
 border: 1px solid #DBDBDB;
 box-shadow: 5px 5px 12px 0px #02152614;
 
+}
+
+.small-drop{
+  Width:382px;
 }
 .form-check-input:checked {
     background-color: #45A849; /* Change background color */
@@ -143,4 +260,11 @@ background: #F93B1D;
 color:white;
 
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
 </style>
