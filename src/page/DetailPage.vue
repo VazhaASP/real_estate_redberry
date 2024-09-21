@@ -51,7 +51,7 @@ onMounted(async() => {
 </script>
 <template>
     <div>
-        <a class="back-icon a-style" href="/">
+        <a class="back-icon a-style" href="/real_estate_redberry/">
             
             <i class="bi bi-arrow-left-short"></i>
         </a>

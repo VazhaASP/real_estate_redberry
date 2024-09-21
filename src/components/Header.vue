@@ -1,7 +1,7 @@
 <script setup lang="js"></script>
 <template>
 <div class="header">
-    <a href="/">
+    <a href="/real_estate_redberry/">
         <img src="../assets/svg/LOGO-02 3.svg" alt="Logo">
     </a>
 </div>
