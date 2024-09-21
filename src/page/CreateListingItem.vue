@@ -164,6 +164,7 @@ await getAgents().then((response)=>{
         <h5 class="form-title w-100 text-center">ლისტინგის დამატება</h5>
     </div>
     <form @submit.prevent="onSubmit(formData)">
+        {{ formData }}
     <section class="mt-5"> 
         <h4 class="section-title">
             გარიგების ტიპი
@@ -228,7 +229,7 @@ await getAgents().then((response)=>{
                  <Field name="region_id" class="form-control " :rules="regionRules"  >
                     <select class="form-select custom-field" aria-label="Default select example" v-model="formData.region_id">
                         <option selected></option>
-                        <option  v-for="(item, index) in regionList" :value="item.id">{{ item.name }}</option>
+                        <option  v-for="(item, index) in regionList" :value="item.id" :key="index">{{ item.name }}</option>
                     </select>
                  </Field>
                  <ErrorMessage name="region_id" class="error-text" />
@@ -240,7 +241,7 @@ await getAgents().then((response)=>{
                     <Field name="city_id" class="form-control " :rules="cityRules"  > 
                         <select class="form-select custom-field" aria-label="Default select example" v-model="formData.city_id">
                             <option selected></option>
-                            <option v-for="(item,index) in cityList" :value="item.id">{{ item.name }}</option>
+                            <option v-for="(item,index) in cityList" :value="item.id" :key="index">{{ item.name }}</option>
                         
                         
                         </select>
@@ -309,7 +310,7 @@ await getAgents().then((response)=>{
                     <label for="formFile" class="form-label w-100 h-100 d-flex justify-content-center align-items-center position-relative">
                     <span class="icon"><i class="bi bi-plus-circle"></i></span>
                     </label>
-                    <Field type="file" id="formFile" name="image" class="position-absolute top-0 start-0 w-100 h-100"  @change="handleFileUpload" />
+                    <Field type="file" id="formFile" name="image" class="position-absolute top-0 start-0 w-100 h-100" :rules="imageRules"  @change="handleFileUpload" />
 
                 </div>
                 <span class="file-name" v-if="formData.image">{{ formData.image.name }}</span>
@@ -329,7 +330,7 @@ await getAgents().then((response)=>{
                         <Field name="agent_id" class="form-control "  :rules="agentRules">
                             <select class="form-select custom-field" aria-label="Default select example" v-model="formData.agent_id">
                                 <option selected></option>
-                                <option v-for="(item,index) in agent" :value="item.id">{{ item.name }}</option>
+                                <option v-for="(item,index) in agent" :value="item.id" :key="index">{{ item.name }}</option>
                             </select>
                         </Field>
                         <ErrorMessage name="agent_id" class="error-text" />
