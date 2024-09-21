@@ -1,6 +1,8 @@
 <script setup lang="js">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useField, Form, Field, ErrorMessage, } from "vee-validate";
+import {getRegions, getCity} from "../http/classificator"
+
 
 const formData = ref({
     name: "",
@@ -9,6 +11,20 @@ const formData = ref({
     avatar: null,
     tel: ""
   });
+
+  const regionList = ref([]);
+  const cityList = ref([]);
+
+onMounted( async() =>{
+    await getRegions().then((response) =>{
+        regionList.value = response.data
+
+    });
+await getCity().then((response)=>{
+    cityList.value = response.data
+})
+
+})
   
 </script>
 
@@ -75,10 +91,8 @@ const formData = ref({
                 <label for="surname" class="form-label custom-label">რეგიონი</label>
                  <Field name="name" class="form-control " v-model="formData.name" >
                     <select class="form-select custom-field" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option selected></option>
+                        <option value="1" v-for="(item, index) in regionList">{{ item.name }}</option>
                     </select>
                  </Field>
                  
@@ -89,10 +103,10 @@ const formData = ref({
                 <label for="surname" class="form-label custom-label">ქალაქი</label>
                  <Field name="name" class="form-control " v-model="formData.name" > 
                     <select class="form-select custom-field" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option selected></option>
+                        <option value="1" v-for="(item,index) in cityList">{{ item.name }}</option>
+                       
+                       
                     </select>
                  </Field>
                  
