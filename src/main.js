@@ -20,7 +20,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory ('/real-estate-redberry/'),
+    history: createWebHistory ('/real_estate_redberry/'),
     routes,
 })
 
