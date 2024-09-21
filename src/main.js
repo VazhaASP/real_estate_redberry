@@ -8,13 +8,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import RealEstatePage from "./page/RealEstatePage.vue"
-import CreateListingItem from "./page/CreateListingItem.vue"; 
+// import CreateListingItem from "./page/CreateListingItem.vue"; 
 
 const app = createApp(App)
 
 const routes = [
     { path: '/', component: RealEstatePage },
-    { path: '/create-new-listing', component: CreateListingItem } 
+    // { path: '/create-new-listing', component: CreateListingItem } 
 ]
 
 const router = createRouter({
