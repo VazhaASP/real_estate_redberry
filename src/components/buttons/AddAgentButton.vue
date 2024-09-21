@@ -58,7 +58,7 @@ const { validate, errors } = useForm({
     showModal.value = false;
   };
   
-  const handleFileUpload = (event) => {
+const handleFileUpload = (event) => {
   const file = event.target.files[0];
   if (file) {
     formData.value.avatar = file;
@@ -94,11 +94,16 @@ const onSubmit = async (values) => {
 </script>
 <template>
     <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-danger me-3">  <a href="/create-new-listing"><i class="bi bi-plus"></i> ლისტინგის დამატება</a> </button>
-            <button type="button" class="btn btn-outline-danger" @click="openModal">     
-                <i class="bi bi-plus"></i> აგენტის დამატება</button>
+        <button type="button" class="btn btn-danger me-3">  
+          <a href="/create-new-listing" class="a-style">
+            <i class="bi bi-plus"></i> ლისტინგის დამატება
+          </a> 
+        </button>
+        <button type="button" class="btn btn-outline-danger" @click="openModal">     
+            <i class="bi bi-plus"></i> აგენტის დამატება
+          </button>
 
-        </div>
+    </div>
 
         <div class="modal fade" tabindex="-1" :class="{ show: showModal }" style="display: block" v-if="showModal">
   <div class="modal-dialog modal-dialog-centered modal-lg">

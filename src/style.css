@@ -69,3 +69,18 @@ input[type="file"] {
   opacity: 0; /* Hides the file input */
   cursor: pointer;
 }
+
+.error-text{
+  font-family: FiraGO;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  text-align: left;
+  color: #F93B1D;
+
+}
+
+.a-style{
+  text-decoration: none; /* Removes the underline */
+    color: inherit;
+}

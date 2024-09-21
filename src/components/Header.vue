@@ -1,7 +1,9 @@
 <script setup lang="js"></script>
 <template>
 <div class="header">
-    <img src="../assets/svg/LOGO-02 3.svg" alt="">
+    <a href="/">
+        <img src="../assets/svg/LOGO-02 3.svg" alt="Logo">
+    </a>
 </div>
 </template>
 <style scoped>
