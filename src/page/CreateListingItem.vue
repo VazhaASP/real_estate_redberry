@@ -155,19 +155,16 @@ onMounted( async() =>{
         regionList.value = response.data
 
     });
-    console.log(regionList.value);
     
 await getCity().then((response)=>{
     cityList.value = response.data;
     staticCityList.value = response.data
 });
-console.log('cityList.value', cityList.value);
 
 await getAgents().then((response)=>{
     agent.value = response.data
-    console.log(response.data);
     
-})
+});
 
 })
   
