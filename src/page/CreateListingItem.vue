@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { useField, Form, Field, ErrorMessage, } from "vee-validate";
 import {getRegions, getCity} from "../http/classificator"
+import { getAgents } from "../http/agent";
 
 
 const formData = ref({
@@ -14,6 +15,7 @@ const formData = ref({
 
   const regionList = ref([]);
   const cityList = ref([]);
+  const agent = ref([])
 
 onMounted( async() =>{
     await getRegions().then((response) =>{
@@ -22,6 +24,11 @@ onMounted( async() =>{
     });
 await getCity().then((response)=>{
     cityList.value = response.data
+});
+await getAgents().then((response)=>{
+    agent.value = response.data
+    console.log(response.data);
+    
 })
 
 })
@@ -185,10 +192,8 @@ await getCity().then((response)=>{
                         <label for="surname" class="form-label custom-label">აირჩიე</label>
                         <Field name="name" class="form-control " v-model="formData.name" >
                             <select class="form-select custom-field" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option selected></option>
+                                <option value="1" v-for="(item,index) in agent">{{ item.name }}</option>
                             </select>
                         </Field>
                         
