@@ -1,6 +1,7 @@
 <script setup lang="js">
 import RealEstateFilter from '../components/filter/RealEstateFilter.vue'
-import AddButton from '../components/buttons/AddAgentButton.vue'
+import AddAgentButton from '../components/buttons/AddAgentButton.vue'
+
 import Advertisement from '../components/Advertisement.vue'
 import { getRealEstates } from '../http/realEstate';
 import { ref, onMounted } from 'vue';
@@ -32,8 +33,8 @@ onMounted( () => {
     <div class="filter-container ">
         <div class="d-flex justify-content-between">
             <real-estate-filter></real-estate-filter>
-            <AddButton></AddButton>
-             <!-- <AddAgentModal></AddAgentModal> -->
+            <AddAgentButton></AddAgentButton>
+            
           
         </div>
     </div>

@@ -63,7 +63,7 @@ const onSubmit = async (values) => {
 </script>
 <template>
     <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-danger me-3"> <i class="bi bi-plus"></i> ლისტინგის დამატება</button>
+            <button type="button" class="btn btn-danger me-3">  <a href="/create-new-listing"><i class="bi bi-plus"></i> ლისტინგის დამატება</a> </button>
             <button type="button" class="btn btn-outline-danger" @click="openModal">     
                 <i class="bi bi-plus"></i> აგენტის დამატება</button>
 
@@ -87,8 +87,8 @@ const onSubmit = async (values) => {
   </div>
 
   <div class="col-md-6">
-    <label for="surname" class="form-label">გვარი</label>
-    <Field name="surname" class="form-control" :rules="surnameRules" v-model="formData.surname" />
+    <label for="surname" class="form-label">გვარი *</label>
+    <Field name="name" class="form-control"  v-model="formData.name" />
     <ErrorMessage name="surname" class="text-danger" />
   </div>
 </div>
@@ -186,5 +186,7 @@ input[type=file] {
   margin-top: 5px;
   color: #555; /* Adjust as needed */
 }
+
+
 
 </style>

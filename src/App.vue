@@ -1,15 +1,18 @@
 <script setup>
-import RealEstatePage from "./page/RealEstatePage.vue"
+
+import {RouterView} from 'vue-router'
+
 import Header from './components/Header.vue'
+
+
 </script>
 
 <template>
   <div>
-  <Header></Header>
+    <Header></Header>
     <div class="container pt-5">
-      <RealEstatePage></RealEstatePage>
+      <RouterView/>
     </div>
-    
   </div>
 </template>
 
