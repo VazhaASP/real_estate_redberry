@@ -70,55 +70,65 @@ const onSubmit = async (values) => {
         </div>
 
         <div class="modal fade" tabindex="-1" :class="{ show: showModal }" style="display: block" v-if="showModal">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between align-items-center">
-        <h5 class="modal-title w-100 text-center">აგენტის დამატება</h5>
+        <h5 class="modal-title text-center">აგენტის დამატება</h5>
         <button type="button" class="btn-close" @click="closeModal"></button>
       </div>
       <div class="modal-body">
         <!-- Validation Form -->
-        <Form @submit="onSubmit"></Form>
-        <div class="row mb-3">
-  <div class="col-md-6">
-    <label for="name" class="form-label">სახელი *</label>
-    <Field name="name" class="form-control" :rules="nameRules" v-model="formData.name" />
-    <ErrorMessage name="name" class="text-danger" />
-  </div>
+        <form @submit.prevent="onSubmit">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label custom-label">სახელი *</label>
+              <Field name="name" class="form-control custom-field" :rules="nameRules" v-model="formData.name" />
+              <ErrorMessage name="name" class="text-danger" />
+            </div>
 
-  <div class="col-md-6">
-    <label for="surname" class="form-label">გვარი *</label>
-    <Field name="name" class="form-control"  v-model="formData.name" />
-    <ErrorMessage name="surname" class="text-danger" />
+            <div class="col-md-6">
+              <label for="surname" class="form-label custom-label">გვარი *</label>
+              <Field name="surname" class="form-control custom-field" v-model="formData.surname" />
+              <ErrorMessage name="surname" class="text-danger" />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="email" class="form-label custom-label">ელ-ფოსტა</label>
+              <Field name="email" class="form-control custom-field" :rules="emailRules" v-model="formData.email" />
+              <ErrorMessage name="email" class="text-danger" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="tel-number" class="form-label custom-label">ტელეფონის ნომერი</label>
+              <Field name="tel" class="form-control custom-field" :rules="telRules" v-model="formData.tel" />
+              <ErrorMessage name="tel" class="text-danger" />
+            </div>
+
+            <div class="col-md-12 my-3">
+              <label for="avatar" class="form-label custom-label">ატვირთე ფოტო *</label>
+              <div class="custom-file-upload d-flex justify-content-center align-items-center">
+                <label for="formFile" class="form-label w-100 h-100 d-flex justify-content-center align-items-center position-relative">
+                  <span class="icon"><i class="bi bi-plus-circle"></i></span>
+                </label>
+                <input type="file" id="formFile" name="avatar" class="position-absolute top-0 start-0 w-100 h-100" @change="handleFileUpload" />
+              </div>
+              <span class="file-name" v-if="formData.avatar">{{ formData.avatar.name }}</span>
+              <ErrorMessage name="avatar" class="text-danger" />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-danger me-3">გაუქმება</button> 
+            <button type="button" class="btn btn-danger">დაამატე აგენტი</button>
+          </div>
+      
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6 mb-3">
-    <label for="email" class="form-label">ელ-ფოსტა</label>
-    <Field name="email" class="form-control" :rules="emailRules" v-model="formData.email" />
-    <ErrorMessage name="email" class="text-danger" />
-  </div>
-
-  <div class="col-md-6 mb-3">
-    <label for="tel-number" class="form-label">ტელეფონის ნომერი</label>
-    <Field name="tel" class="form-control" :rules="telRules" v-model="formData.tel" />
-    <ErrorMessage name="tel" class="text-danger" />
-  </div>
-  <div class="col-md-6 mb-3 ">
-  <label for="avatar" class="form-label">ატვირთე ფოტო</label>
-  <div class="custom-file-upload">
-    <input type="file" id="avatar" name="avatar" class="form-control custom-div" @change="handleFileUpload" />
-    <span class="file-name" v-if="formData.avatar">{{ formData.avatar.name }}</span>
-  </div>
-  <ErrorMessage name="avatar" class="text-danger" />
-</div>
-
-  </div>
-</div>
-  </div>
-</div>
-        </div>
         
 </template>
 <style scoped>
@@ -138,54 +148,6 @@ border-radius: 10px 0px 0px 0px;
 opacity: 0px;
 
   }
-  .name{
-    width: 384px;
-height: 17px;
-gap: 0px;
-opacity: 0px;
-font-family: FiraGO;
-font-size: 14px;
-font-weight: 500;
-line-height: 16.8px;
-text-align: left;
-color: #021526;
-
-  }
-  .surname{
-
-  }
-  /* #avatar{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 1px solid red !important;
-    box-sizing: border-box;
-  /* border-color:red; */
-  /* border-style: dotted; */
-  
-
-  .custom-file-upload {
-  position: relative;
-  display: inline-block;
-}
-
-.custom-file-upload input[type="file"] {
-  display: none; /* Hide the default file input */
-}
-
-input[type=file] {
-  width: 100%;
-  height: auto;
-  border: 1px dotted black; /* Dotted border */
-  border-radius: 4px; /* Adjust as needed */
-  opacity: 1; /* Make sure it is visible */
-}
-
-.file-name {
-  display: block;
-  margin-top: 5px;
-  color: #555; /* Adjust as needed */
-}
 
 
 
