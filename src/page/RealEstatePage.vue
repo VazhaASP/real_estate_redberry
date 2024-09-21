@@ -12,6 +12,10 @@ const staticRealEstate = ref([]);
 const realEstates = ref(null);
 const regionList = ref([]);
 const regionModel = ref([])
+const priceModal = ref({
+  to: null,
+  from: null
+})
 
 const filterRegion = () => {
   console.log('Selected Regions:', regionModel.value)
@@ -38,7 +42,25 @@ const price = ref([
   {value: 150000, name: "150,000 ₾"},
   {value: 200000, name: "200,000 ₾"},
   {value: 250000, name: "250,000 ₾"},
-])
+]);
+
+
+const filterPrice = () =>{
+  if (priceModal.value.to && price.value.from) {
+    realEstates.value = staticRealEstate.value.filter((estate) =>
+      estate.price >= priceModal.value.to && estate.price <= price.value.from
+    );
+  }else{
+    realEstates.value = [...staticRealEstate.value]
+  }
+}
+
+const addMinPrice = (item) =>{
+  priceModal.value.to = item
+}
+const addMaxPrice = (item) =>{
+  priceModal.value.from = item
+}
 
 onMounted( async() => {
     await getRealEstates()
@@ -111,29 +133,39 @@ onMounted( async() => {
                 <div class="row mt-3">
                   <div class="col-6">
                     <div class="mb-3">
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="დან">
+                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="დან" v-model="priceModal.to">
                     </div>
                     <div>
                       <p>მინ. ფასი</p>
                       <ul>
-                        <li v-for="(item, index) in price" :key="index">{{ item.name }}</li>
+                        <li 
+                          v-for="(item, index) in price" 
+                          :key="index"
+                          role="button"
+                          @click="addMinPrice(item.value)"
+                          >{{ item.name }}</li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="mb-3">
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="მდე">
+                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="მდე" v-model="priceModal.from">
                     </div>
                     <div>
                       <p>მაქს. ფასი</p>
                       <ul>
-                        <li v-for="(item, index) in price" :key="index">{{ item.name }}</li>
+                        <li 
+                          v-for="(item, index) in price" 
+                          :key="index"
+                          role="button"
+                          @click="addMaxPrice(item.value)"
+                          >{{ item.name }}</li>
                       </ul>
                     </div>
                   </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                  <button class="btn choose" @click="filterRegion">არჩევა</button>
+                  <button class="btn choose" @click="filterPrice">არჩევა</button>
                 </div>
               </div>
               
