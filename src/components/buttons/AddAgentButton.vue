@@ -94,8 +94,8 @@ const onSubmit = async (values) => {
 </script>
 <template>
     <div class="d-flex justify-content-between">
-      <router-link to="/create-new-listing" class="a-style">
-        <button type="button" class="btn btn-danger me-3">  
+      <router-link to="/create-new-listing" class="">
+        <button type="button" class="btn btn-danger me-3 custom-btn">  
           <i class="bi bi-plus"></i> ლისტინგის დამატება
         </button>
       </router-link>
@@ -184,6 +184,13 @@ left: 455px;
 gap: 0px;
 border-radius: 10px 0px 0px 0px;
 opacity: 0px;
+
+  }
+
+  .custom-btn{
+  height:47px;
+  background: #F93B1D;
+  color: white; 
 
   }
 
